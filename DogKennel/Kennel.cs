@@ -15,6 +15,7 @@ class Kennel {
         Name = name;
         Owner = owner;
 
+        // Add more dogs here.
         Dog Bob = new Dog("Bob", "Old, grumpy and hungry", 62, "boodhound", 0, 1, 2);
         Dogs.Add(Bob);
 
@@ -36,13 +37,8 @@ class Kennel {
         Dog Duke = new Dog("Duke", "Confident and protective", 80, "Rottweiler", 0, 3, 5);
         Dogs.Add(Duke);
 
+        GameplayLoop();
 
-        PrintDogs();
-
-        SelectDog("Enter the name of the dog that should partake in a running race. (Input is case sensitive)");
-        SelectDog("Enter the name of the second dog that should partake in the running race. (Input is case sensitive");
-
-        Race();
     }
 
     /// <summary>
@@ -118,6 +114,8 @@ class Kennel {
                                 // If this check fails throw an error to the user and let the user start from the begining
                             } else {
                                 Console.WriteLine("A dog cannot compete against itself");
+                                Thread.Sleep(700);
+                                Console.Clear();
                                 continue;
                             }
 
@@ -134,13 +132,17 @@ class Kennel {
         }
     }
 
+    /// <summary>
+    /// Simulates a race between two dogs, evaluating their performance based on factors such as stamina, chonkiness, size, and gender-related traits.
+    /// The winner is determined through a point system, with each factor contributing to the points. Randomness is introduced in tie-breaking scenarios.
+    /// </summary>
     private void Race() {
         Dog competingDog1;
         Dog competingDog2;
 
         // The dog that is currently winning. Is used in the competing algorithm.
         int potentialWinner;
-        int winningDog = 0;
+        int winningDog;
 
         int competingDog1Points = 0;
         int competingDog2Points = 0;
@@ -236,5 +238,33 @@ class Kennel {
         }
 
         Console.WriteLine($"{CompetingDogs[winningDog-1].Name} wins!");
+    }
+
+    /// <summary>
+    /// Gameplay loop. Handles dog selection and if the user wants to play again.
+    /// </summary>
+    private void GameplayLoop() {
+        while (true) {
+            PrintDogs();
+
+            SelectDog("Enter the name of the dog that should partake in a running race. (Input is case sensitive)");
+            SelectDog("Enter the name of the second dog that should partake in the running race. (Input is case sensitive");
+
+            Race();
+
+            while (true) {
+                Console.WriteLine("Do you want to play again? (yes/no)");
+                string Input = Console.ReadLine()!.ToLower();
+
+                if (Input == "yes") {
+                    break;
+                } else if (Input == "no") {
+                    Environment.Exit(0);
+                } else {
+                    Console.WriteLine("Parse error, please enter yes or no");
+                    continue;
+                }
+            }
+        }
     }
 }
