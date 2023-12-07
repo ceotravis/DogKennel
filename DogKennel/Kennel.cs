@@ -250,17 +250,22 @@ class Kennel {
             SelectDog("Enter the name of the dog that should partake in a running race. (Input is case sensitive)");
             SelectDog("Enter the name of the second dog that should partake in the running race. (Input is case sensitive");
 
+            // Simulate a race between the two selected dogs.
             Race();
 
             while (true) {
                 Console.WriteLine("Do you want to play again? (yes/no)");
                 string Input = Console.ReadLine()!.ToLower();
 
+                // Prompt the user for another round
                 if (Input == "yes") {
+                    // Start a new race
                     break;
                 } else if (Input == "no") {
+                    // Exit the programs
                     Environment.Exit(0);
                 } else {
+                    // Handle invalid input 
                     Console.WriteLine("Parse error, please enter yes or no");
                     continue;
                 }
