@@ -1,12 +1,12 @@
 ﻿class Dog {
-    public Guid ID = Guid.NewGuid();
+    public Guid ID;
     public string Name { get; }
     public string? Description { get; }
     public int Stamina { get; }
     public string Breed { get; }
     public int Gender { get; }
     public int Size { get; }
-    public int Chonk { get;  }
+    public int Chonk { get; }
 
     /// <summary>
     /// Create a dog
@@ -22,16 +22,17 @@
         if (name == null || name == "") throw new ArgumentNullException("name");
         if (stamina <= 0) throw new ArgumentNullException("stamina");
         if (breed == null || breed == "") throw new ArgumentNullException("breed");
-        if (gender != 0 && gender != 1) throw new ArgumentOutOfRangeException("gender");
-        if (size <= 0) throw new ArgumentOutOfRangeException("size");
-        if (chonk > 6) throw new ArgumentOutOfRangeException("chonk");
-        
-        Name = name; 
-        Description = description; 
+        if (gender != 0 && gender != 1) throw new ArgumentException("gender");
+        if (size <= 0) throw new ArgumentException("size");
+        if (chonk > 6) throw new ArgumentException("chonk");
+
+        ID = Guid.NewGuid();
+        Name = name;
+        Description = description;
         Stamina = stamina;
-        Breed = breed; 
-        Gender = gender; 
-        Size = size; 
+        Breed = breed;
+        Gender = gender;
+        Size = size;
         Chonk = chonk;
     }
 
@@ -52,19 +53,15 @@
     /// </summary>
     /// <returns>Size of dog</returns>
     public string GetSize() {
-        try {
-            switch (Size) {
-                case 1:
-                    return "Small";
-                case 2:
-                    return "Medium";
-                case 3:
-                    return "Large";
-                case 4:
-                    return "Extra large";
-            }
-        } catch (Exception e) {
-            Console.WriteLine(e.Message);
+        switch (Size) {
+            case 1:
+                return "Small";
+            case 2:
+                return "Medium";
+            case 3:
+                return "Large";
+            case 4:
+                return "Extra large";
         }
         return "error";
     }

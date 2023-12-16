@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates; // Hackingkod
-
-class Kennel {
+﻿class Kennel {
     List<Dog> Dogs = new List<Dog>();
     List<Dog> CompetingDogs = new List<Dog>(2);
     public string Name { get; set; }
