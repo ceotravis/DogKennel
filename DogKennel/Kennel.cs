@@ -266,6 +266,7 @@
 
                 // Prompt the user for another round
                 if (Input == "yes") {
+                    Console.Clear();
                     // Start a new race
                     break;
                 } else if (Input == "no") {
