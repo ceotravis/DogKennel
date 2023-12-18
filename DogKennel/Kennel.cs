@@ -101,15 +101,17 @@
                     for (int i = 0; i < Dogs.Count; i++) {
                         // Check if a dog exist with the name of the user's input
                         if (Dogs[i].Name == selectDog) {
+                            // If there isn't any dog in the CompetingDogs array add the dog without an ID check
+                            // If there is a dog in the CompetingDogs array
                             // Compare the id of the user's selected dog to the the first dog in the CompetingDogs array
-                            // Makes it impossible to add the same dog twice.
+                            // Which it impossible to add the same dog twice.
                             if (CompetingDogs.Count == 0) {
                                 CompetingDogs.Add(Dogs[i]);
                                 return;
                             } else if (Dogs[dogIndex].ID != CompetingDogs.First().ID) {
                                 CompetingDogs.Add(Dogs[i]);
                                 return;
-                                // If this check fails throw an error to the user and let the user start from the begining
+                              // If this check fails throw an error to the user and let the user start from the begining
                             } else {
                                 Console.WriteLine("A dog cannot compete against itself");
                                 Thread.Sleep(700);
