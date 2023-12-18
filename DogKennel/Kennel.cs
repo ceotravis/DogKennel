@@ -102,7 +102,7 @@
                         // Check if a dog exist with the name of the user's input
                         if (Dogs[i].Name == selectDog) {
                             // Compare the id of the user's selected dog to the the first dog in the CompetingDogs array
-                            // This is so that you cannot add the same dog twice.
+                            // Makes it impossible to add the same dog twice.
                             if (CompetingDogs.Count == 0) {
                                 CompetingDogs.Add(Dogs[i]);
                                 return;
