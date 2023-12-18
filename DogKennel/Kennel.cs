@@ -1,8 +1,8 @@
 ﻿class Kennel {
     List<Dog> Dogs = new List<Dog>();
     List<Dog> CompetingDogs = new List<Dog>(2);
-    public string Name { get; set; }
-    public string Owner { get; set; }
+    public string Name { get; }
+    public string Owner { get; }
 
     /// <summary>
     ///  Create a kennel, add all dogs in the constructor.
