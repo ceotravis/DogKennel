@@ -105,6 +105,8 @@
                             // If there is a dog in the CompetingDogs array
                             // Compare the id of the user's selected dog to the the first dog in the CompetingDogs array
                             // Which it impossible to add the same dog twice.
+
+                            // FIXME: The ID check is reduntant right now since the user can only input the name of the dog
                             if (CompetingDogs.Count == 0) {
                                 CompetingDogs.Add(Dogs[i]);
                                 return;
