@@ -177,7 +177,7 @@
             }
         }
 
-        // The dog that is less chonky will be the potential winner.
+        // The dog that is less chonky will get 40 points. If both are equally chonky one will by random and get 20 points
         if (competingDog1.Chonk < competingDog2.Chonk) {
             competingDog1Points += 40;
         } else if (competingDog2.Chonk < competingDog1.Chonk) {
@@ -192,7 +192,8 @@
             }
         }
 
-        // The dog with the smallest size will win
+        // The dog with the smallest size will get 10 points, if both dogs have the same size randomness will be introduced
+        // and the winning dog will get 5 points
         if (competingDog1.Size > competingDog2.Size) {
             potentialWinner = 1;
             competingDog2Points += 10;
@@ -209,25 +210,33 @@
 
         // Introduce randomness based on both dog's genders
         if (competingDog1.Gender == 1 && competingDog2.Gender == 0) {
+            // If competingDog1 is male and competingDog2 is female
             randomInt = random.Next(1, 45);
 
+            // Apply points to competingDog2 based on random condition
             if (randomInt % 2 == 0) {
                 competingDog2Points += 10;
             }
-        } else if (competingDog1.Gender == 0 && competingDog2.Gender  == 1) {
+        } else if (competingDog1.Gender == 0 && competingDog2.Gender == 1) {
+            // If competingDog1 is female and competingDog2 is male
             randomInt = random.Next(1, 45);
 
+            // Apply points to competingDog1 based on random condition
             if (randomInt % 2 != 0) {
                 competingDog1Points += 10;
             }
         } else {
+            // If dogs have the same gender or if gender information is not available
             potentialWinner = random.Next(1, 3);
+
+            // Randomly assign points to one of the dogs
             if (potentialWinner == 1) {
                 competingDog1Points += 5;
             } else {
                 competingDog2Points += 5;
             }
         }
+
 
         if (competingDog1Points > competingDog2Points) {
             winningDog = 1;
